@@ -4,18 +4,10 @@ import './Track.css';
 class Track extends React.Component() {
   
   renderAction() {
-    if (isRemoval !== true) {
-      return (
-        <div>
-          <button>+</button>
-        </div>
-      );
+    if (this.props.isRemoval) {
+      return <button className="Track-action">-</button>
     } else {
-      return (
-        <div>
-          <button>-</button>
-        </div>
-      );
+      return <button className="Track-action">+</button>
     }
   };
   
@@ -26,11 +18,11 @@ class Track extends React.Component() {
           <h3>/*track name will go here*/</h3>
           <p>/*track artist will go here*/ | /*track album will go here*/</p>
         </div>
-        <button className="Track-action">{this.renderAction}</button>
+       {this.renderAction()}
       </div>
     );
   }
 };
 
-module.exports = Track;
+export default Track;
 
