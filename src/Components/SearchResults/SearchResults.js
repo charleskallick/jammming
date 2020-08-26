@@ -14,3 +14,4 @@ class SearchResults extends React.Component() {
 };
 
 module.exports = SearchResults;
+

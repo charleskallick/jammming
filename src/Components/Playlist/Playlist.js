@@ -15,3 +15,4 @@ class Playlist extends React.Component() {
 };
 
 module.exports = Playlist;
+

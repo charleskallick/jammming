@@ -1,7 +1,7 @@
 import React from 'react';
 import './Track.css';
 
-class Tracks extends React.Component() {
+class Track extends React.Component() {
   
   renderAction() {
     if (isRemoval !== true) {
@@ -33,3 +33,4 @@ class Tracks extends React.Component() {
 };
 
 module.exports = Track;
+
