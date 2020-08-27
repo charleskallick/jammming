@@ -4,7 +4,6 @@ import './Track.css';
 class Track extends React.Component() {
   constructor(props) {
     super(props);
-    this.state= '';
 
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -23,7 +22,7 @@ class Track extends React.Component() {
   };
 
   removeTrack() {
-    this.props.onRemove(this.props.track)
+    this.props.onRemove(this.props.track);
   };
 
   render() {
