@@ -69,7 +69,7 @@ const Spotify = {
         }).then(response => response.json()
         ).then(jsonResponse => {
             const playlistId = jsonResponse.id;
-            return fetch(`https:api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, 
+            return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, 
             {
               headers: headers,
               method: 'POST',
