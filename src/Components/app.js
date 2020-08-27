@@ -45,8 +45,8 @@ class App extends React.Component {
   };
 
   savePlayist() {
-    const trackUri = this.state.playlistTracks(track => track.uri);
-    Spotify.savePlaylist(this.state.playlistName, trackUri).then(() => {
+    const trackUris = this.state.playlistTracks(track => track.uri);
+    Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
       this.setState({
         playlistName: 'My New Playlist', 
         playlistTracks: []
@@ -65,7 +65,7 @@ class App extends React.Component {
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
-          <SearchBar onSearch={this.search } />
+          <SearchBar onSearch={this.search} />
         <div className="App-playlist">
           <SearchResults searchResults={this.state.searchResults}
                          onAdd={this.addTrack} />
