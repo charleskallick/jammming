@@ -55,7 +55,6 @@ class App extends React.Component {
   }
 
   search(term) {
-    alert("method is linked to the button correctly")
     Spotify.search(term).then(searchResults => {
       this.setState({searchResults: searchResults});
     });
