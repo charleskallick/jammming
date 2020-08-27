@@ -22,7 +22,7 @@ const Spotify = {
       return accessToken;
     } else {
       const accessURL = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
-      window.location.accessURL;
+      window.location = accessURL;
     }
   },
 
@@ -61,10 +61,23 @@ const Spotify = {
     ).then(response => response.json()
     ).then(jsonResponse => {
       userID = jsonResponse.id;
-      return fetch(``)
+      return fetch(`https://api.spotify.com/v1/users/${userID}/playlists`,
+        {
+          headers: headers,
+          method: 'POST',
+          body: JSON.stringify({name: name})
+        }).then(response => response.json()
+        ).then(jsonResponse => {
+            const playlistID = jsonResponse.id;
+            return fetch(`https:api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`, 
+            {
+              headers: headers,
+              method: 'POST',
+              body: JSON.stringify({uris: trackUris})
+            });
+        });
     });
-  },
-
+  }
 };
 
 
