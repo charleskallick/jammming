@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = { 
       searchResults: [],
-      playlistName: '',
+      playlistName: 'Create a Playlist',
       playlistTracks: []
     };
 
@@ -38,11 +38,11 @@ class App extends React.Component {
     track = tracks.filter(currentTrack => currentTrack.id !== track.id);
 
     this.setState({playlistTracks: tracks});
-  };
+  }
 
   updatePlaylistName(name) {
     this.setState({playlistName: name});
-  };
+  }
 
   savePlayist() {
     const trackUris = this.state.playlistTracks(track => track.uri);
@@ -52,13 +52,13 @@ class App extends React.Component {
         playlistTracks: []
       });
     });
-  };
+  }
 
   search(term) {
     Spotify.search(term).then(searchResults => {
       this.setState({searchResults: searchResults});
     });
-  };
+  }
 
   render() {
     return (
@@ -68,17 +68,17 @@ class App extends React.Component {
           <SearchBar onSearch={this.search} />
         <div className="App-playlist">
           <SearchResults searchResults={this.state.searchResults}
-                         onAdd={this.addTrack} />
+            onAdd={this.addTrack} />
           <Playlist playlistName={this.state.playlistName}
-                    playlistTracks={this.state.playlistTracks}
-                    onRemove={this.removeTrack}
-                    onNameChange={this.updatePlaylistName}
-                    onSave={this.savePlayist} />
+            playlistTracks={this.state.playlistTracks}
+            onRemove={this.removeTrack}
+            onNameChange={this.updatePlaylistName}
+            onSave={this.savePlayist} />
+        </div>
         </div>
       </div>
-    </div>
-  );
-    }
+    );
+  }
 }
 
 export default App;
