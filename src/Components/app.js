@@ -9,6 +9,7 @@ import Spotify from '../util/Spotify';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = { 
       searchResults: [],
       playlistName: 'Create a Playlist',
@@ -24,18 +25,17 @@ class App extends React.Component {
 
   addTrack(track) {
     let tracks = this.state.playlistTracks;
-    
-    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+    if (tracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
     } 
 
-    this.push(track);
+    tracks.push(track);
     this.setState({playlistTracks: tracks});
   };
 
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
-    track = tracks.filter(currentTrack => currentTrack.id !== track.id);
+    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
 
     this.setState({playlistTracks: tracks});
   }
@@ -45,7 +45,7 @@ class App extends React.Component {
   }
 
   savePlayist() {
-    const trackUris = this.state.playlistTracks(track => track.uri);
+    const trackUris = this.state.playlistTracks.map(track => track.uri);
     Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
       this.setState({
         playlistName: 'My New Playlist', 
@@ -55,6 +55,7 @@ class App extends React.Component {
   }
 
   search(term) {
+    alert("method is linked to the button correctly")
     Spotify.search(term).then(searchResults => {
       this.setState({searchResults: searchResults});
     });
