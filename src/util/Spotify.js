@@ -14,7 +14,7 @@ const Spotify = {
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
     if (accessTokenMatch && expiresInMatch) {
-      accessTokenMatch = accessTokenMatch[1];
+      accessToken = accessTokenMatch[1];
       const expiresIn = Number(expiresInMatch[1]);
       //clears parameters from the URL, so the app doesn’t try grabbing the access token after it expires
       window.setTimeout(() => accessToken = '', expiresIn * 1000);
